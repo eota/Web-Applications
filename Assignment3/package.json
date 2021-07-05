@@ -1,0 +1,21 @@
+{
+  "name": "cse183-assignment3",
+  "version": "1.0.0",
+  "description": "CSE183 Assignment 3 - JavsScript I",
+  "repository": "none",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^7.11.0",
+    "eslint-config-google": "^0.14.0",
+    "jest": "^26.5.3"
+  },
+  "jest": {
+    "collectCoverage": true
+  },
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint *.js",
+    "test": "jest"
+  },
+  "author": "David Harrison <dcharris@ucsc.edu>",
+  "license": "UNLICENSED"
+}
