@@ -1,0 +1,28 @@
+{
+  "name": "cse183-assignment7",
+  "version": "1.0.0",
+  "description": "CSE183 Assignment 7 - Node.js & Express",
+  "author": "David Harrison <dcharris@ucsc.edu>",
+  "license": "UNLICENSED",
+  "repository": "none",
+  "devDependencies": {
+    "bestzip": "^2.1.7",
+    "eslint": "^7.12.1",
+    "eslint-config-google": "^0.14.0",
+    "jest": "^26.5.3",
+    "nodemon": "^2.0.6",
+    "supertest": "^6.0.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-openapi-validator": "^4.5.0",
+    "js-yaml": "^3.14.0",
+    "swagger-ui-express": "^4.1.4"
+  },
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint . --ext .js",
+    "start": "nodemon src/server.js",
+    "test": "jest --runInBand --testTimeout=2000 --coverage",
+    "zip": "bestzip Assignment7.Submission.zip src/* api/* test/*; tar -tf Assignment7.Submission.zip"
+  }
+}
