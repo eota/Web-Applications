@@ -1,0 +1,48 @@
+/*
+  CSE183 Assignment 2
+
+  CSS for Stretch Requirement using two or all of the following:
+
+    Gradients
+    Transtitions
+    Animations
+
+  Partial credit for using just one.
+*/
+
+div {
+  margin-left: auto;
+  margin-right: auto;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  line-height: 60px;
+  font-size: 40px;
+  color: black;
+  background-color: yellow;
+  font-family: "Lucida Console", Courier, monospace;
+
+  transition: width 1s, height 1s, transform 1s, line-height 1s;
+  transition-timing-function: ease-in;
+
+}
+
+/* the -webkit- prefix is for google chrome */
+@-webkit-keyframes animate1 {
+  from {background-color: yellow;}
+  to {background-color: blue;}
+}
+
+div.number {
+  animation-name: animate1;
+  animation-duration: 2s;
+  animation-direction: alternate-reverse;
+  animation-iteration-count: infinite;
+}
+
+div.letter:hover {
+  width: 180px;
+  height: 180px;
+  transform: rotate(360deg);
+  line-height: 180px;
+}

@@ -1,0 +1,76 @@
+/*
+  CSE183 Assignment 2
+
+  CSS for Advanced Requirement
+*/
+
+/*
+  TODO: Numbers share one border instead of having their own;
+*/
+
+div.letter {
+  width: 100px;
+  height: 180px;
+  background-color: darkblue;
+  font-size: 60px;
+  text-indent: 10px;
+  color: white;
+  font-family: "Lucida Console", Courier, monospace;
+}
+
+div.letter:hover {
+  background-color: white;
+  color: darkblue;
+}
+
+div.number {
+  width: 60px;
+  height: 60px;
+  background-color: black;
+  font-size: 40px;
+  line-height: 60px;
+  color: yellow;
+  font-family: "Lucida Console", Courier, monospace;
+  border-style: solid;
+  border-color: yellow;
+  text-align: center;
+}
+
+div.number:hover {
+  background-color: yellow;
+  color: black;
+}
+
+div.one{
+  position: fixed;
+  bottom: 0;
+  right: 120px;
+}
+div.eight{
+  position: fixed;
+  bottom: 0;
+  right: 60px;
+}
+
+div.three{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+div.C{
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+div.S{
+  position: fixed;
+  top: 0;
+  left: 100px;
+}
+
+div.E{
+  position: fixed;
+  top: 0;
+  left: 200px;
+}
