@@ -1,0 +1,20 @@
+To install node packages:
+
+  $ npm install
+
+To run the Web App: 
+
+  $ npm start
+
+To run tests: 
+
+  $ npm test
+
+To run the linter: 
+
+  $ npm run lint
+
+To generate a Canvas submission ZIP: 
+
+  $ npm run zip
+

@@ -1,0 +1,195 @@
+#
+# CSE183 Assignment 8
+#
+
+openapi: '3.0.3'
+
+info:
+  description: CSE183 Assignment 8
+  version: 0.1.0
+  title: CSE183 Assignment 8
+
+servers:
+  - url: http://localhost:3010
+
+paths:
+  /v0/mail:
+    get:
+      description: Returns an array of emails
+      parameters:
+        - in: query
+          name: mailbox
+          schema:
+            type: string
+          required: false
+          description: Mailbox name
+        - in: query
+          name: from
+          schema:
+            type: string
+          required: false
+          description: From name or email
+      responses:
+        200:
+          description: Emails Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailsResponse'
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    post:
+      description: Creates a new email
+      requestBody:
+        description: Email to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewEmail'
+      responses:
+        201:
+          description: Application response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Email'
+        400:
+          description: Invalid ID
+        409:
+          description: Conflict. Requested ID in use.
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+  /v0/mail/{id}:
+    get:
+      description: Returns a single email
+      parameters:
+      - name: id
+        in: path
+        description: ID of the email
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Email found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Email'
+        400:
+          description: Invalid ID
+        404:
+          description: Email not found
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      description: Moves an email from one mailbox to another
+      parameters:
+        - name: id
+          in: path
+          description: ID of the email
+          required: true
+          schema:
+            type: string
+        - name: mailbox
+          in: query
+          description: Mailbox to move to
+          required: true
+          schema:
+            type: string
+      responses:
+        204:
+          description: Success
+        404:
+          description: id does not identify a known email
+        400:
+          description: invalid UUID
+        409:
+          description: Cannot move non-sent mail to sent mailbox
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+
+    EmailsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          mail:
+            type: array
+            items:
+              $ref: '#/components/schemas/Email'
+
+    Email:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+        to:
+          type: object
+        from:
+          type: object
+        sent:
+          type: string
+        received:
+          type: string
+        subject:
+          type: string
+        content:
+          type: string
+
+      required:
+        - to
+        - received
+        - from
+        - sent
+
+    NewEmail:
+      type: object
+      additionalProperties: false
+      properties:
+        to:
+          type: object
+        subject:
+          type: string
+        content:
+          type: string
+
+      required:
+        - to
